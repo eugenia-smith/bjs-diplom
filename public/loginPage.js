@@ -18,7 +18,6 @@ function checkResponse(response) {
 
 newUserForm.registerFormCallback = function getRegisterData(data) {
     ApiConnector.register(data, checkRegisterData)
-    //console.log(data);
 };
 
 
@@ -26,7 +25,7 @@ function checkRegisterData(response) {
     if (response['success'] == true) {
         location.reload();
     } else {
-        newUserForm.setLoginErrorMessage(response['error'])
+        newUserForm.setRegisterErrorMessage(response['error'])
     }
 }
 
