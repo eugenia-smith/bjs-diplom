@@ -36,3 +36,17 @@ function stocksDataCallback(response) {
 modifyRatesTable();
 setInterval(modifyRatesTable, 60000);
 
+let newMoneyManager = new MoneyManager();
+
+newMoneyManager.addMoneyCallback = function askForMoney(data) {
+    ApiConnector.addMoney(data, addMoneyCallback);
+}
+
+function addMoneyCallback(response) {
+    if (response['success'] == true) {
+        ProfileWidget.showProfile(response['data']);
+        console.log(response)
+    } else {
+        newMoneyManager.setMessage(false, response['error']);
+    }
+}
