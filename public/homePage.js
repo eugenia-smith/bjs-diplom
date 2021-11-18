@@ -29,7 +29,7 @@ function modifyRatesTable() {
 }
 
 function stocksDataCallback(response) {
-    if(response['success'] == true) {
+    if (response['success'] == true) {
         newRatesBoard.clearTable();
         newRatesBoard.fillTable(response['data']);
     }
@@ -57,7 +57,7 @@ newMoneyManager.conversionMoneyCallback = function askForConversion(data) {
 }
 
 function convertMoneyCallback(response) {
-    if (response['success'] == true){
+    if (response['success'] == true) {
         ProfileWidget.showProfile(response['data'])
     } else {
         newMoneyManager.setMessage(false, response['error'])
@@ -65,11 +65,11 @@ function convertMoneyCallback(response) {
 }
 
 newMoneyManager.sendMoneyCallback = function shareSomeMoney(data) {
-    ApiConnector.transferMoney(data,shareSomeMoneyCallback);
+    ApiConnector.transferMoney(data, shareSomeMoneyCallback);
 }
 
 function shareSomeMoneyCallback(response) {
-    if (response['success'] == true){
+    if (response['success'] == true) {
         ProfileWidget.showProfile(response['data'])
     } else {
         newMoneyManager.setMessage(false, response['error'])
@@ -107,7 +107,7 @@ newFavoritesList.removeUserCallback = function deleteOldPal(data) {
     ApiConnector.removeUserFromFavorites(data, deleteOldPalCallback)
 }
 
-function deleteOldPalCallback (response) {
+function deleteOldPalCallback(response) {
     if (response['success'] == true) {
         newFavoritesList.clearTable();
         newFavoritesList.fillTable(response['data']);
